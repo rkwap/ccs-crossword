@@ -118,10 +118,11 @@
 		}
 		
 		window.onload = function () {
-			var fiveMinutes = 60 * 50,
+			var timeMinutes = 60 * {{time_remaining}},
 				display = document.querySelector('#time');
-			startTimer(fiveMinutes, display);
+			startTimer(timeMinutes, display);
 		};
+	
 	</script>
 
 </head>
@@ -132,7 +133,7 @@
 	<div class="row">
 		<div class="col-md-8">
 			<!-- crossword puzzle appended here -->
-			<form method="post" action="">
+			<form name="quiz" id="quiz" target="_quiz" method="post" action="">
 			{% csrf_token %}
 				<table id="puzzle">
 					<tbody>

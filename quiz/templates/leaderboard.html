@@ -15,21 +15,40 @@
           <td><h3>NAME</h3></td>
           <td><h3>SCORE</h3></td>
           <td><h3>COMPLETED</h3></td>
-          <!-- <td><h3>TIME TAKEN</h3></td> -->
+          <td><h3>TIME TAKEN</h3></td>
           <td><h3>STARTED AT</h3></td>
           <td><h3>FINISHED AT</h3></td>
         </tr>
-        {% for u in users %}
+        {% for u,time in data %}
         <tr>
           <td>{{ u.user }}</td>
+          
+          {% if u.score is not none %}
           <td>{{ u.score }}</td>
-          <td>{{ u.completed }}</td>
+          {% else %}
+          <td></td>
+          {% endif %}
 
-          <td>{{ u.started_at }}</td>
-          <td>{{ u.finished_at }}</td>
+          {% if u.completed is True %}
+          <td>Yes</td>
+          {% else %}
+          <td>No</td>
+          {% endif %}
+
+          {% if time is not none %}
+          <td>{{ time }} minutes</td>
+          {% else %}
+          <td></td>
+          {% endif %}
+
+          <td>{{ u.started_at|time }}</td>
+          <td>{{ u.finished_at|time }}</td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
+
+
+<br><br><br>
   </body>
 </html>
