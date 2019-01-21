@@ -58,10 +58,6 @@ def play(request):
 
 
 def results(request):
-    score = []
-    completed = []
-    started_at = []
-    finished_at = []
     time_taken = []
     users = leaderboard.objects.all().extra(select={
                                         'new_score': 'score IS NULL',
