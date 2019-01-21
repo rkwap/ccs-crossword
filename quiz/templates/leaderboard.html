@@ -1,8 +1,35 @@
 <html>
-<head>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <h1>Leaderboard</h1>
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td><h3>NAME</h3></td>
+          <td><h3>SCORE</h3></td>
+          <td><h3>COMPLETED</h3></td>
+          <!-- <td><h3>TIME TAKEN</h3></td> -->
+          <td><h3>STARTED AT</h3></td>
+          <td><h3>FINISHED AT</h3></td>
+        </tr>
+        {% for u in users %}
+        <tr>
+          <td>{{ u.user }}</td>
+          <td>{{ u.score }}</td>
+          <td>{{ u.completed }}</td>
 
-</head>
-<body>
-    Leaderboard
-</body>
+          <td>{{ u.started_at }}</td>
+          <td>{{ u.finished_at }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
 </html>

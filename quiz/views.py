@@ -2,6 +2,7 @@ from django.shortcuts import *
 from .models import *
 import datetime
 
+
 ### Some Settings ###
 BOXES = 6  # Total number of boxes in crossword
 CORRECT_POINTS = 5  # Marks awarded on correct response
@@ -52,4 +53,6 @@ def play(request):
 
 
 def results(request):
+    users = leaderboard.objects.all()
+
     return render(request,"leaderboard.html",locals())

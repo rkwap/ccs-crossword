@@ -9,6 +9,8 @@ class leaderboard(models.Model):
     completed = models.BooleanField(default=False)
     started_at = models.DateTimeField(auto_now=True,null=True)
     finished_at = models.DateTimeField(auto_now_add=True,null=True)
+    # timeTaken = finished_at - started_at
+    # time=timeTaken= duration.total_seconds()
 
 class questions(models.Model):
     q_no = models.CharField(max_length=150,primary_key=True)
