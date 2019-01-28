@@ -4,11 +4,11 @@ import datetime
 from datetime import timedelta,timezone
 
 ### Some Settings ###
-BOXES = 6  # Total number of boxes in crossword
-CORRECT_POINTS = 5  # Marks awarded on correct response
-INCORRECT_POINTS = 2 # Marks deduced on incorrect response 
+BOXES = 53  # Total number of boxes in crossword
+CORRECT_POINTS = 4  # Marks awarded on correct response
+INCORRECT_POINTS = 1 # Marks deduced on incorrect response 
 UNATTEMPT_POINTS = 0
-TIME_ALLOTED = 38 # Time alloted for the quiz (in minutes)
+TIME_ALLOTED = 120 # Time alloted for the quiz (in minutes)
 ######
 
 # Create your views here.
