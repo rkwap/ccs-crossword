@@ -3,22 +3,42 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Qurossword - A javascript crossword puzzle plugin</title>
+	<title>CrossCode by CCS</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	<script type="text/javascript"> 
+
+function stopRKey(evt) { 
+  var evt = (evt) ? evt : ((event) ? event : null); 
+  var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
+  if ((evt.keyCode == 13) && (node.type=="text"))  {return false;} 
+} 
+
+document.onkeypress = stopRKey; 
+
+</script>
+
 	<style type="text/css" media="screen">
 		/*
 			Default puzzle styling
 		*/
 		body {
+			background-color: #333;
 			font: 62.5%/1.3em Helvetica, sans-serif;
 			width: 90.3%;
 			margin: 10px auto;
 			zoom: 1; 
+		}
+
+		h2,h3 {
+			color: white;
+		}
+
+
 		}
 			table { 
 				border-collapse: collapse; 
@@ -31,10 +51,10 @@
 			table td {
 				width: 5em;
 				height: 5em;
-				border: 1px solid #cdcdcd;
+				
 				padding: 0;
 				margin: 0;
-				background-color: #333;
+				background-color: transparent;
 				position: relative;
 			}
 					
@@ -42,11 +62,12 @@
 				width: 100%;
 				height: 100%;
 				padding: 0em;
-				border: none;
+				border: 1px solid #333;
 				text-align: center;
 				font-size: 3em;
 				color: #666;
-				background-color: #f4f4f4;
+				background-color: white;
+
 			}
 			
 			td input:focus {
@@ -55,10 +76,10 @@
 			
 			td span {
 				color: #444;
-				font-size: 0.8em;
+				font-size: 18px;
 				position: absolute;
-				top: -1px;
-				left: 1px;
+				top: 4px;
+				left: 2px;
 			}
 			
 			input.done {
@@ -79,8 +100,26 @@
 				width: 40%;
 			}
 			
-			#puzzle-clues li{
-				font-size: 1.2em;
+			#puzzle-clues li
+			{
+				list-style-type: none;
+				font-size: 15px;
+				margin: .8em;
+				line-height: 1.6em;
+				cursor: pointer;
+				color: blue;
+			}
+
+			
+
+
+
+
+			
+
+			.problem_content {
+				font-size: 20px;
+
 				margin: .3em;
 				line-height: 1.6em;
 			}
@@ -138,294 +177,272 @@
 				<table id="puzzle">
 					<tbody>
 						<tr>
-							<td data-coords="1,1" class="entry-1 position-0 position-1">
+							<td data-coords="1,1">  </td>
+							<td data-coords="2,1"></td>
+
+							<td data-coords="3,1" class="entry-1 position-0">
 								<input name="1" maxlength="1" val="" type="text" tabindex="-1"><span>1</span>
 							</td>
-							<td data-coords="2,1" class="entry-1 position-0">
-								<input name="2" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="3,1" class="entry-1 position-0">
-								<input name="3" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="4,1" class="entry-1 position-0">
-								<input name="4" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="5,1" class="entry-2 position-2">
-								<input name="5" maxlength="1" val="" type="text" tabindex="-1"><span>2</span></td>
-							<td data-coords="6"></td>
+							
+							<td data-coords="4,1"></td>
+							<td data-coords="5,1"></td>
+							<td data-coords="6,1"></td>
+							<td data-coords="7,1"></td>
+							<td data-coords="8,1"></td>
+							<td data-coords="9,1"></td>
+							<td data-coords="10,1"></td>
+							<td data-coords="11,1"></td>
+							<td data-coords="12,1"></td>
+							<td data-coords="13,1"></td>
+							<td data-coords="14,1"></td>
 
-							<td data-coords="7,1" class="entry-3 position-3">
-								<input name="6" maxlength="1" val="" type="text" tabindex="-1"><span>3</span></td>
-							<td data-coords="8,1" class="entry-3 position-3">
-								<input name="7" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="9,1" class="entry-3 position-3 entry-4 position-4">
-								<input name="8" maxlength="1" val="" type="text" tabindex="-1"><span>4</span></td>
-							<td data-coords="10,1" class="entry-3 position-3">
-								<input name="9" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="11,1" class="entry-3 position-3">
-								<input name="10" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
 						</tr>
 
 						<tr>
 							<td data-coords="1,2" class="entry-1 position-1">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
+								<input name="2" maxlength="1" val="" type="text" tabindex="-1"><span>2</span>
 							</td>
-							<td data-coords="2,2"></td>
-							<td data-coords="3,2"></td>
+							<td data-coords="2,2">  <input name="3" maxlength="1" val="" type="text" tabindex="-1">   </td>
+							<td data-coords="3,2">  <input name="4" maxlength="1" val="" type="text" tabindex="-1">  </td>
 							<td data-coords="4,2"></td>
-							<td data-coords="5,2" class="entry-2 position-2">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
+							<td data-coords="5,2"></td>
 							<td data-coords="6,2"></td>
 							<td data-coords="7,2"></td>
 							<td data-coords="8,2"></td>
-							<td data-coords="9,2" class="entry-4 position-4">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
+							<td data-coords="9,2"></td>
 							<td data-coords="10,2"></td>
 							<td data-coords="11,2"></td>
+							<td data-coords="12,2"></td>
+							<td data-coords="13,2"></td>
+							<td data-coords="14,2"></td>
 						</tr>
 
 						<tr>
-							<td data-coords="1,3" class="entry-1 position-1 entry-5 position-5">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1"><span>5</span></td>
-							<td data-coords="2,3" class="entry-5 position-5">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
+							<td data-coords="1,3" class="entry-1 position-1">
+								
 							</td>
-							<td data-coords="3,3" class="entry-5 position-5">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="4,3" class="entry-5 position-5">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="5,3" class="entry-2 position-2 entry-5 position-5">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="6,3" class="entry-5 position-5">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="7,3" class="entry-5 position-5 entry-6 position-6">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1"><span>6</span></td>
-							<td data-coords="8,3" class="entry-5 position-5">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="9,3" class="entry-4 position-4 entry-5 position-5">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="10,3" class="entry-5 position-5">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="11,3" class="entry-5 position-5 entry-7 position-7">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1"><span>7</span></td>
+							<td data-coords="2,3">  </td>
+							<td data-coords="3,3">  <input name="5" maxlength="1" val="" type="text" tabindex="-1"> <span>3</span> </td>
+							<td data-coords="4,3"><input name="6" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="5,3"><input name="7" maxlength="1" val="" type="text" tabindex="-1"><span>4</span></td>
+							<td data-coords="6,3"><input name="8" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="7,3"><input name="9" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="8,3"><input name="10" maxlength="1" val="" type="text" tabindex="-1"><span>5</span></td>
+							<td data-coords="9,3"></td>
+							<td data-coords="10,3"></td>
+							<td data-coords="11,3"></td>
+							<td data-coords="12,3"></td>
+							<td data-coords="13,3"></td>
+							<td data-coords="14,3"></td>
 						</tr>
 
 						<tr>
 							<td data-coords="1,4" class="entry-1 position-1">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
+								
 							</td>
 							<td data-coords="2,4"></td>
-							<td data-coords="3,4"></td>
+							<td data-coords="3,4">  <input name="11" maxlength="1" val="" type="text" tabindex="-1">  </td>
 							<td data-coords="4,4"></td>
-							<td data-coords="5,4"></td>
+							<td data-coords="5,4"><input name="12" maxlength="1" val="" type="text" tabindex="-1"></td>
 							<td data-coords="6,4"></td>
-							<td data-coords="7,4" class="entry-6 position-6">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="8,4"></td>
+							<td data-coords="7,4"></td>
+							<td data-coords="8,4"><input name="13" maxlength="1" val="" type="text" tabindex="-1"></td>
 							<td data-coords="9,4"></td>
 							<td data-coords="10,4"></td>
-							<td data-coords="11,4" class="entry-7 position-7">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
+							<td data-coords="11,4"></td>
+							<td data-coords="12,4"></td>
+							<td data-coords="13,4"></td>
+							<td data-coords="14,4"></td>
 						</tr>
 
 						<tr>
-							<td data-coords="1,5" class="entry-1 position-1 entry-8 position-8">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1"><span>8</span></td>
-							<td data-coords="2,5" class="entry-8 position-8">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
+							<td data-coords="1,5" class="entry-1 position-1">
+								
 							</td>
-							<td data-coords="3,5" class="entry-8 position-8">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="4,5" class="entry-8 position-8">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="5,5" class="entry-8 position-8 entry-9 position-9">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1"><span>9</span></td>
-							<td data-coords="6,5" class="entry-8 position-8">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="7,5" class="entry-6 position-6 entry-8 position-8">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="8,5" class="entry-8 position-8">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="9,5" class="entry-8 position-8">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="10,5" class="entry-8 position-8">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
+							<td data-coords="2,5"></td>
+							<td data-coords="3,5">  <input name="14" maxlength="1" val="" type="text" tabindex="-1">  </td>
+							<td data-coords="4,5"></td>
+							<td data-coords="5,5"><input name="15" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="6,5"></td>
+							<td data-coords="7,5"></td>
+							<td data-coords="8,5"><input name="16" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="9,5"></td>
+							<td data-coords="10,5"></td>
 							<td data-coords="11,5"></td>
+							<td data-coords="12,5"></td>
+							<td data-coords="13,5"></td>
+							<td data-coords="14,5"></td>
 						</tr>
 
 						<tr>
-							<td data-coords="1,6"></td>
-							<td data-coords="2,6"></td>
-							<td data-coords="3,6"></td>
+							<td data-coords="1,6" class="entry-1 position-1">
+								
+							</td>
+							<td data-coords="2,6">    </td>
+							<td data-coords="3,6">    </td>
 							<td data-coords="4,6"></td>
-							<td data-coords="5,6" class="entry-9 position-9">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
+							<td data-coords="5,6"><input name="17" maxlength="1" val="" type="text" tabindex="-1"></td>
 							<td data-coords="6,6"></td>
-							<td data-coords="7,6" class="entry-6 position-6">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
+							<td data-coords="7,6"></td>
 							<td data-coords="8,6"></td>
 							<td data-coords="9,6"></td>
-							<td data-coords="10,6"></td>
-							<td data-coords="11,6"></td>
+							<td data-coords="10,6"><input name="18" maxlength="1" val="" type="text" tabindex="-1"><span>6</span></td>
+							<td data-coords="11,6"><input name="19" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="12,6"><input name="20" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="13,6"></td>
+							<td data-coords="14,6"></td>
 						</tr>
 
 						<tr>
-							<td data-coords="1,7"></td>
-							<td data-coords="2,7" class="entry-10 position-10">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1"><span>10</span></td>
-							<td data-coords="3,7" class="entry-10 position-10">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
+							<td data-coords="1,7" class="entry-1 position-1">
+								
 							</td>
-							<td data-coords="4,7" class="entry-10 position-10">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="5,7" class="entry-9 position-9 entry-10 position-10">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="6,7" class="entry-10 position-10">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="7,7" class="entry-6 position-6 entry-10 position-10">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="8,7" class="entry-10 position-10">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="9,7" class="entry-10 position-10">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="10,7" class="entry-10 position-10">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="11,7" class="entry-10 position-10 entry-11 position-11">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1"><span>11</span></td>
+							<td data-coords="2,7">    </td>
+							<td data-coords="3,7">    </td>
+							<td data-coords="4,7"></td>
+							<td data-coords="5,7"><input name="21" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="6,7"></td>
+							<td data-coords="7,7"><input name="22" maxlength="1" val="" type="text" tabindex="-1"><span>7</span></td>
+							<td data-coords="8,7"></td>
+							<td data-coords="9,7"></td>
+							<td data-coords="10,7"><input name="23" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="11,7"></td>
+							<td data-coords="12,7"></td>
+							<td data-coords="13,7"></td>
+							<td data-coords="14,7"></td>
 						</tr>
 
 						<tr>
-							<td data-coords="1,8" class="entry-12 position-12">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1"><span>12</span></td>
-							<td data-coords="2,8"></td>
-							<td data-coords="3,8"></td>
+							<td data-coords="1,8" class="entry-1 position-1">
+								
+							</td>
+							<td data-coords="2,8">    </td>
+							<td data-coords="3,8">    </td>
 							<td data-coords="4,8"></td>
-							<td data-coords="5,8" class="entry-9 position-9">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
+							<td data-coords="5,8"><input name="24" maxlength="1" val="" type="text" tabindex="-1"></td>
 							<td data-coords="6,8"></td>
-							<td data-coords="7,8"></td>
+							<td data-coords="7,8"><input name="25" maxlength="1" val="" type="text" tabindex="-1"></td>
 							<td data-coords="8,8"></td>
 							<td data-coords="9,8"></td>
-							<td data-coords="10,8"></td>
-							<td data-coords="11,8" class="entry-11 position-11">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
+							<td data-coords="10,8"><input name="26" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="11,8"></td>
+							<td data-coords="12,8"></td>
+							<td data-coords="13,8"></td>
+							<td data-coords="14,8"></td>
 						</tr>
 
 						<tr>
-							<td data-coords="1,9" class="entry-12 position-12 entry-13 position-13">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1" class=""><span>13</span></td>
-							<td data-coords="2,9" class="entry-13 position-13">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1" class="">
+							<td data-coords="1,9" class="entry-1 position-1">
+								
 							</td>
-							<td data-coords="3,9" class="entry-13 position-13 entry-14 position-14">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1" class=""><span>14</span></td>
-							<td data-coords="4,9" class="entry-13 position-13">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1" class="">
-							</td>
-							<td data-coords="5,9" class="entry-9 position-9 entry-13 position-13">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1" class="">
-							</td>
-							<td data-coords="6,9" class="entry-13 position-13">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1" class="">
-							</td>
-							<td data-coords="7,9" class="entry-13 position-13 entry-15 position-15">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1" class=""><span>15</span></td>
-							<td data-coords="8,9" class="entry-13 position-13">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1" class="">
-							</td>
-							<td data-coords="9,9" class="entry-13 position-13">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1" class="">
-							</td>
-							<td data-coords="10,9" class="entry-13 position-13">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1" class="">
-							</td>
-							<td data-coords="11,9" class="entry-11 position-11 entry-13 position-13">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1" class="">
-							</td>
+							<td data-coords="2,9"></td>
+							<td data-coords="3,9"></td>
+							<td data-coords="4,9"><input name="27" maxlength="1" val="" type="text" tabindex="-1"><span>8</span></td>
+							<td data-coords="5,9"><input name="28" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="6,9"><input name="29" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="7,9"><input name="30" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="8,9"><input name="31" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="9,9"><input name="32" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="10,9"><input name="33" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="11,9"><input name="34" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="12,9"><input name="35" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="13,9"></td>
+							<td data-coords="14,9"></td>
 						</tr>
 
 						<tr>
-							<td data-coords="1,10"></td>
-							<td data-coords="2,10"></td>
-							<td data-coords="3,10" class="entry-14 position-14">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
+							<td data-coords="1,10" class="entry-1 position-1">
+								
 							</td>
+							<td data-coords="2,10">     </td>
+							<td data-coords="3,10">    </td>
 							<td data-coords="4,10"></td>
 							<td data-coords="5,10"></td>
 							<td data-coords="6,10"></td>
-							<td data-coords="7,10" class="entry-15 position-15">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
+							<td data-coords="7,10"><input name="36" maxlength="1" val="" type="text" tabindex="-1"></td>
 							<td data-coords="8,10"></td>
 							<td data-coords="9,10"></td>
-							<td data-coords="10,10"></td>
-							<td data-coords="11,10" class="entry-11 position-11">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
+							<td data-coords="10,10"><input name="37" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="11,10"></td>
+							<td data-coords="12,10"></td>
+							<td data-coords="13,10"></td>
+							<td data-coords="14,10"></td>
 						</tr>
 
 						<tr>
-							<td data-coords="1,11" class="entry-16 position-16">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1"><span>16</span></td>
-							<td data-coords="2,11" class="entry-16 position-16">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
+							<td data-coords="1,11" class="entry-1 position-1">
+								
 							</td>
-							<td data-coords="3,11" class="entry-14 position-14 entry-16 position-16">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="4,11" class="entry-16 position-16">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
-							<td data-coords="5,11" class="entry-16 position-16">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
+							<td data-coords="2,11">   </td>
+							<td data-coords="3,11">  </td>
+							<td data-coords="4,11"></td>
+							<td data-coords="5,11"></td>
 							<td data-coords="6,11"></td>
-							<td data-coords="7,11" class="entry-15 position-15 entry-17 position-17">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1"><span>17</span></td>
-							<td data-coords="8,11" class="entry-17 position-17">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
+							<td data-coords="7,11"><input name="38" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="8,11"></td>
+							<td data-coords="9,11"></td>
+							<td data-coords="10,11"><input name="39" maxlength="1" val="" type="text" tabindex="-1"><span>9</span></td>
+							<td data-coords="11,11"><input name="40" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="12,11"><input name="41" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="13,11"><input name="42" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="14,11"><input name="43" maxlength="1" val="" type="text" tabindex="-1"></td>
+						</tr>
+
+						<tr>
+							<td data-coords="1,12" class="entry-1 position-1">
+								
 							</td>
-							<td data-coords="9,11" class="entry-17 position-17">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
+							<td data-coords="2,12"></td>
+							<td data-coords="3,12"></td>
+							<td data-coords="4,12"><input name="44" maxlength="1" val="" type="text" tabindex="-1"><span>10</span></td>
+							<td data-coords="5,12"><input name="45" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="6,12"><input name="46" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="7,12"><input name="47" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="8,12"><input name="48" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="9,12"><input name="49" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="10,12"></td>
+							<td data-coords="11,12"></td>
+							<td data-coords="12,12"></td>
+							<td data-coords="13,12"></td>
+							<td data-coords="14,12"></td>
+						</tr>
+
+						<tr>
+							<td data-coords="1,13" class="entry-1 position-1">
+								
 							</td>
-							<td data-coords="10,11" class="entry-17 position-17">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
+							<td data-coords="2,13"></td>
+							<td data-coords="3,13"></td>
+							<td data-coords="4,13"></td>
+							<td data-coords="5,13"></td>
+							<td data-coords="6,13"></td>
+							<td data-coords="7,13"><input name="50" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="8,13"></td>
+							<td data-coords="9,13"></td>
+							<td data-coords="10,13"></td>
+							<td data-coords="11,13"></td>
+							<td data-coords="12,13"></td>
+							<td data-coords="13,13"></td>
+							<td data-coords="14,13"></td>
+						</tr>
+
+						<tr>
+							<td data-coords="1,14" class="entry-1 position-1">
+								
 							</td>
-							<td data-coords="11,11" class="entry-11 position-11 entry-17 position-17">
-								<input name="1,1" maxlength="1" val="" type="text" tabindex="-1">
-							</td>
+							<td data-coords="2,14"></td>
+							<td data-coords="3,14"></td>
+							<td data-coords="4,14"></td>
+							<td data-coords="5,14"><input name="51" maxlength="1" val="" type="text" tabindex="-1"><span>11</span></td>
+							<td data-coords="6,14"><input name="52" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="7,14"><input name="53" maxlength="1" val="" type="text" tabindex="-1"></td>
+							<td data-coords="8,14"></td>
+							<td data-coords="9,14"></td>
+							<td data-coords="10,14"></td>
+							<td data-coords="11,14"></td>
+							<td data-coords="12,14"></td>
+							<td data-coords="13,14"></td>
+							<td data-coords="14,14"></td>
 						</tr>
 
 					</tbody>
@@ -433,9 +450,16 @@
 			
 			<br>
 			<!-- Button trigger modal -->
+
+			<br><br><br><br><br>
+
+			<div style="margin-left: 400px;">
 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submit">
 				Submit
 			</button>
+			</div>
+
+			<br><br><br><br><br>
 
 			<!-- Modal -->
 			<div class="modal fade" id="submit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -461,17 +485,28 @@
 			</form>
 		</div>
 
+
 		<div id="puzzle-clues" class="col-md-4">
 			
 				<h2>Across</h2>
-				<ol id="across">
-						<li tabindex="1" data-position="0" class="clues-active"><div class="container"></div><a data-toggle="modal" data-target="#myModal1" style="cursor: pointer">First letter of greek alphabet</a></li>
+				<ul id="across" style="border: 1px solid blue">
+						<li tabindex="1" data-position="0"><a href="">2. </a><button class="btn-primary btn-sm" data-toggle="modal" data-target="#myModal1" style="cursor: pointer">Integer Right Triangles</button></li>
 						<!-- Modal -->
 						<div class="modal fade" id="myModal1" role="dialog">
 							<div class="modal-dialog modal-lg">
 							<div class="modal-content">
 								<div class="modal-body">
-								<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error nulla atque fugit perspiciatis placeat enim porro veritatis nihil ut nemo, suscipit dolores obcaecati maxime dicta, nostrum accusamus? Doloremque, velit hic..</p>
+
+
+									<div class="problem_content" role="problem">
+<p>If <i>p</i> is the perimeter of a right angle triangle with integral length sides, {<i>a</i>,<i>b</i>,<i>c</i>}, there are exactly three solutions for <i>p</i> = 120.</p>
+<p>{20,48,52}, {24,45,51}, {30,40,50}</p>
+<p>For which value of <i>p</i> ≤ 1000, is the number of solutions maximised?</p>
+
+</div>
+								
+
+
 								</div>
 								<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -483,13 +518,24 @@
 					
 					
 					
-					<li tabindex="1" data-position="3"><a data-toggle="modal" data-target="#myModal2" style="cursor: pointer">Not a one ___ motor, but a three ___ motor</a></li>
+					<li tabindex="1" data-position="3"><a href="">3. </a><button class="btn-primary btn-sm" data-toggle="modal" data-target="#myModal2"> Truncatable primes </button></li>
 					<!-- Modal -->
 						<div class="modal fade" id="myModal2" role="dialog">
 							<div class="modal-dialog modal-lg">
 							<div class="modal-content">
 								<div class="modal-body">
-								<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error nulla atque fugit perspiciatis placeat enim porro veritatis nihil ut nemo, suscipit dolores obcaecati maxime dicta, nostrum accusamus? Doloremque, velit hic..</p>
+
+
+									<div class="problem_content" role="problem">
+
+<p>The number 3797 has an interesting property. Being prime itself, it is possible to continuously remove digits from left to right, and remain prime at each stage: 3797, 797, 97, and 7. Similarly we can work from right to left: 3797, 379, 37, and 3.</p>
+<p>Find the sum of the only eleven primes that are both truncatable from left to right and right to left.</p>
+<p class="info">NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.</p>
+
+</div>
+								
+
+
 								</div>
 								<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -497,27 +543,42 @@
 							</div>
 							</div>
 						</div>
-					<li tabindex="1" data-position="5"><a data-toggle="modal" data-target="#myModal3" style="cursor: pointer">Created from a separation of charge</a></li>
+					<li tabindex="1" data-position="5"><a href="">6. </a><button class="btn-primary btn-sm" data-toggle="modal" data-target="#myModal3" style="cursor: pointer"> Coded triangle numbers </button></li>
 					<!-- Modal -->
 						<div class="modal fade" id="myModal3" role="dialog">
 							<div class="modal-dialog modal-lg">
 							<div class="modal-content">
 								<div class="modal-body">
-								<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error nulla atque fugit perspiciatis placeat enim porro veritatis nihil ut nemo, suscipit dolores obcaecati maxime dicta, nostrum accusamus? Doloremque, velit hic..</p>
-								</div>
+								<div class="problem_content" role="problem">
+<p>The <i>n</i><sup>th</sup> term of the sequence of triangle numbers is given by, <i>t<sub>n</sub></i> = ½<i>n</i>(<i>n</i>+1); so the first ten triangle numbers are:</p>
+<p style="text-align:center;">1, 3, 6, 10, 15, 21, 28, 36, 45, 55, ...</p>
+<p>By converting each letter in a word to a number corresponding to its alphabetical position and adding these values we form a word value. For example, the word value for SKY is 19 + 11 + 25 = 55 = <i>t</i><sub>10</sub>. If the word value is a triangle number then we shall call the word a triangle word.</p>
+<p>Using <a style="color: blue;"> words.txt </a> (on your desktop), a 16K text file containing nearly two-thousand common English words, how many are triangle words?</p>
+</div>
 								<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								</div>
 							</div>
 							</div>
 						</div>
-					<li tabindex="1" data-position="8"><a data-toggle="modal" data-target="#myModal4" style="cursor: pointer">The speeds of engines without and accelaration</a></li>
+</div>
+
+					<li tabindex="1" data-position="8"><a href="">8. </a><button class="btn-primary btn-sm" data-toggle="modal" data-target="#myModal4" style="cursor: pointer"> Number spiral diagonals </button></li>
 					<!-- Modal -->
 						<div class="modal fade" id="myModal4" role="dialog">
 							<div class="modal-dialog modal-lg">
 							<div class="modal-content">
 								<div class="modal-body">
-								<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error nulla atque fugit perspiciatis placeat enim porro veritatis nihil ut nemo, suscipit dolores obcaecati maxime dicta, nostrum accusamus? Doloremque, velit hic..</p>
+								<div class="problem_content" role="problem">
+<p>Starting with the number 1 and moving to the right in a clockwise direction a 5 by 5 spiral is formed as follows:</p>
+<p style="text-align:center;font-family:'courier new';"><span style="color:#ff0000;font-family:'courier new';"><b>21</b></span> 22 23 24 <span style="color:#ff0000;font-family:'courier new';"><b>25</b></span><br>
+20 &nbsp;<span style="color:#ff0000;font-family:'courier new';"><b>7</b></span> &nbsp;8 &nbsp;<span style="color:#ff0000;font-family:'courier new';"><b>9</b></span> 10<br>
+19 &nbsp;6 &nbsp;<span style="color:#ff0000;font-family:'courier new';"><b>1</b></span> &nbsp;2 11<br>
+18 &nbsp;<span style="color:#ff0000;font-family:'courier new';"><b>5</b></span> &nbsp;4 &nbsp;<span style="color:#ff0000;font-family:'courier new';"><b>3</b></span> 12<br><span style="color:#ff0000;font-family:'courier new';"><b>17</b></span> 16 15 14 <span style="color:#ff0000;font-family:'courier new';"><b>13</b></span></p>
+<p>It can be verified that the sum of the numbers on the diagonals is 101.</p>
+<p>What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed in the same way?</p>
+
+</div>
 								</div>
 								<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -525,13 +586,18 @@
 							</div>
 							</div>
 						</div>
-					<li tabindex="1" data-position="10"><a data-toggle="modal" data-target="#myModal5" style="cursor: pointer">Complex resistances</a></li>
+					<li tabindex="1" data-position="10"><a href="">9. </a><button class="btn-primary btn-sm" data-toggle="modal" data-target="#myModal5" style="cursor: pointer"> Amicable Numbers </button></li>
 					<!-- Modal -->
 						<div class="modal fade" id="myModal5" role="dialog">
 							<div class="modal-dialog modal-lg">
 							<div class="modal-content">
 								<div class="modal-body">
-								<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error nulla atque fugit perspiciatis placeat enim porro veritatis nihil ut nemo, suscipit dolores obcaecati maxime dicta, nostrum accusamus? Doloremque, velit hic..</p>
+								<div class="problem_content" role="problem">
+<p>Let d(<i>n</i>) be defined as the sum of proper divisors of <i>n</i> (numbers less than <i>n</i> which divide evenly into <i>n</i>).<br>
+If d(<i>a</i>) = <i>b</i> and d(<i>b</i>) = <i>a</i>, where <i>a</i> ≠ <i>b</i>, then <i>a</i> and <i>b</i> are an amicable pair and each of <i>a</i> and <i>b</i> are called amicable numbers.</p>
+<p>For example, the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55 and 110; therefore d(220) = 284. The proper divisors of 284 are 1, 2, 4, 71 and 142; so d(284) = 220.</p>
+<p>Evaluate the sum of all the amicable numbers under 10000.</p>
+</div>
 								</div>
 								<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -539,26 +605,177 @@
 							</div>
 							</div>
 						</div>
-					<li tabindex="1" data-position="13" class="">This device is used to step-up, step-down, and/or isolate</li>
-					<li tabindex="1" data-position="16">Type of ray emitted frm the sun</li>
-					<li tabindex="1" data-position="17">C programming language operator</li>
-				</ol>
+					<li tabindex="1" data-position="13" class=""><a href="">10. </a><button class="btn-primary btn-sm" data-toggle="modal" data-target="#myModal6" style="cursor: pointer"> Digit fifth powers </button></li>
+					<!-- Modal -->
+						<div class="modal fade" id="myModal6" role="dialog">
+							<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-body">
+								<div class="problem_content" role="problem">
+
+<p>Surprisingly there are only three numbers that can be written as the sum of fourth powers of their digits:</p>
+<blockquote>1634 = 1<sup>4</sup> + 6<sup>4</sup> + 3<sup>4</sup> + 4<sup>4</sup><br>
+8208 = 8<sup>4</sup> + 2<sup>4</sup> + 0<sup>4</sup> + 8<sup>4</sup><br>
+9474 = 9<sup>4</sup> + 4<sup>4</sup> + 7<sup>4</sup> + 4<sup>4</sup></blockquote>
+<p class="info">As 1 = 1<sup>4</sup> is not a sum it is not included.</p>
+<p>The sum of these numbers is 1634 + 8208 + 9474 = 19316.</p>
+<p>Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.</p>
+
+</div>
+								</div>
+								<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+							</div>
+						</div></li>
+					<li tabindex="1" data-position="16"><a href="">11. </a><button class="btn-primary btn-sm" data-toggle="modal" data-target="#myModal7" style="cursor: pointer"> Champernowne's constant </button></li>
+					<!-- Modal -->
+						<div class="modal fade" id="myModal7" role="dialog">
+							<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-body">
+								<div class="problem_content" role="problem">
+<p>An irrational decimal fraction is created by concatenating the positive integers:</p>
+<p style="text-align:center;">0.12345678910<span style="color:#dd0000;font-size:14pt;">1</span>112131415161718192021...</p>
+<p>It can be seen that the 12<sup>th</sup> digit of the fractional part is 1.</p>
+<p>If <i>d</i><sub><i>n</i></sub> represents the <i>n</i><sup>th</sup> digit of the fractional part, find the value of the following expression.</p>
+<p style="text-align:center;"><i>d</i><sub>1</sub> × <i>d</i><sub>10</sub> × <i>d</i><sub>100</sub> × <i>d</i><sub>1000</sub> × <i>d</i><sub>10000</sub> × <i>d</i><sub>100000</sub> × <i>d</i><sub>1000000</sub></p>
+
+</div>
+								</div>
+								<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+							</div>
+						</div></li>
+					
+				</ul>
+
+				<br><br><br><br>
+
 				<h2>Down</h2>
-				<ol id="down">
-					<li tabindex="1" data-position="1">Defines the alpha-numeric characters that are typically associated with text used in programming</li>
-					<li tabindex="1" data-position="2">Generally, if you go over 1kV per cm this happens</li>
-					<li tabindex="1" data-position="4">Control system strategy that tries to replicate the human through process (abbr.)</li>
-					<li tabindex="1" data-position="6">Greek variable that usually describes rotor positon</li>
-					<li tabindex="1" data-position="7">Electromagnetic (abbr.)</li>
-					<li tabindex="1" data-position="9">No. 13 across does this to a voltage</li>
-					<li tabindex="1" data-position="11">Emits a lout wailing sound</li>
-					<li tabindex="1" data-position="12">Information technology (abbr.)</li>
-					<li tabindex="1" data-position="14">Asynchronous transfer mode (abbr.)</li>
-					<li tabindex="1" data-position="15">Offset current control (abbr.)</li>
-				</ol>
+				<ul id="down" style="border: 1px solid blue;">
+					<li tabindex="1" data-position="1"><a href="">1. </a><button class="btn-primary btn-sm" data-toggle="modal" data-target="#myModal8" style="cursor: pointer"> Curious Numbers </button></li>
+					<!-- Modal -->
+						<div class="modal fade" id="myModal8" role="dialog">
+							<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-body">
+								<div class="problem_content" role="problem">
+
+<p>145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.</p>
+<p>Find the sum of all numbers which are equal to the sum of the factorial of their digits.</p>
+<p class="info">Note: as 1! = 1 and 2! = 2 are not sums they are not included.</p>
+
+</div>
+								</div>
+								<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+							</div>
+						</div></li>
+					<li tabindex="1" data-position="2"><a href="">4. </a><button class="btn-primary btn-sm" data-toggle="modal" data-target="#myModal9" style="cursor: pointer"> Square digit chains </button></li>
+					<!-- Modal -->
+						<div class="modal fade" id="myModal9" role="dialog">
+							<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-body">
+								<div class="problem_content" role="problem">
+
+<p>A number chain is created by continuously adding the square of the digits in a number to form a new number until it has been seen before.</p>
+<p>For example,</p>
+<p style="margin-left:50px;">44 → 32 → 13 → 10 → <b>1</b> → <b>1</b><br>
+85 → <b>89</b> → 145 → 42 → 20 → 4 → 16 → 37 → 58 → <b>89</b></p>
+<p>Therefore any chain that arrives at 1 or 89 will become stuck in an endless loop. What is most amazing is that EVERY starting number will eventually arrive at 1 or 89.</p>
+<p>How many starting numbers below ten million will arrive at 89?</p>
+
+</div>
+								</div>
+								<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+							</div>
+						</div></li>
+					<li tabindex="1" data-position="4"><a href="">5. </a><button class="btn-primary btn-sm" data-toggle="modal" data-target="#myModal10" style="cursor: pointer"> Largest exponential </button></li>
+					<!-- Modal -->
+						<div class="modal fade" id="myModal10" role="dialog">
+							<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-body">
+								<div class="problem_content" role="problem">
+<p>Comparing two numbers written in index form like 2<sup>11</sup> and 3<sup>7</sup> is not difficult, as any calculator would confirm that 2<sup>11</sup> = 2048 &lt; 3<sup>7</sup> = 2187.</p>
+<p>However, confirming that 632382<sup>518061</sup> &gt; 519432<sup>525806</sup> would be much more difficult, as both numbers contain over three million digits.</p>
+<p>Using <a style="color: blue; ">base_exp.txt</a> (on your desktop), a 22K text file containing one thousand lines with a base/exponent pair on each line, determine which line number has the greatest numerical value.</p>
+<p class="info">NOTE: The first two lines in the file represent the numbers in the example given above.</p>
+
+</div>
+								</div>
+								<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+							</div>
+						</div></li>
+					<li tabindex="1" data-position="6"><a>6. </a><button class="btn-primary btn-sm" data-toggle="modal" data-target="#myModal11" style="cursor: pointer"> Distinct primes factors </button></li>
+					<!-- Modal -->
+						<div class="modal fade" id="myModal11" role="dialog">
+							<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-body">
+								<div class="problem_content" role="problem">
+<p>The first two consecutive numbers to have two distinct prime factors are:</p>
+<p style="margin-left:100px;">14 = 2 × 7<br>15 = 3 × 5</p>
+<p>The first three consecutive numbers to have three distinct prime factors are:</p>
+<p style="margin-left:100px;">644 = 2² × 7 × 23<br>645 = 3 × 5 × 43<br>646 = 2 × 17 × 19.</p>
+<p>Find the first four consecutive integers to have four distinct prime factors each. What is the first of these numbers?</p>
+
+</div>
+								</div>
+								<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+							</div>
+						</div></li>
+					<li tabindex="1" data-position="7"><a>7. </a><button class="btn-primary btn-sm" data-toggle="modal" data-target="#myModal12" style="cursor: pointer"> Passcode derivation </button></li>
+					<!-- Modal -->
+						<div class="modal fade" id="myModal12" role="dialog">
+							<div class="modal-dialog modal-lg">
+							<div class="modal-content">
+								<div class="modal-body">
+								<div class="problem_content" role="problem">
+
+<div class="problem_content" role="problem">
+<p>A common security method used for online banking is to ask the user for three random characters from a passcode. For example, if the passcode was 531278, they may ask for the 2nd, 3rd, and 5th characters; the expected reply would be: 317.</p>
+<p>The text file, <a style="color: blue"> keylog.txt </a> (on your desktop), contains fifty successful login attempts.</p>
+<p>Given that the three characters are always asked for in order, analyse the file so as to determine the shortest possible secret passcode of unknown length.</p>
+
+</div>
+
+</div>
+								</div>
+								<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+							</div>
+						</div></li>
+					
+				</ul>
 			
 		</div>
 	</div>
 </div>
+
+<footer style="font-size: 20px; float: right; padding: 20px;">
+
+						<a style="color: #39b9bc ;">&copy; Creative Computing Society</a>
+					
+</footer>
+
 </body>
 </html>	
