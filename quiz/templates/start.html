@@ -21,6 +21,14 @@ function stopRKey(evt) {
 document.onkeypress = stopRKey; 
 
 </script>
+<script type="text/javascript">
+	setTimeout("CallButton()",7200000)
+	function CallButton()
+	{
+	   document.getElementById("submit1").click(); 
+	   setTimeout(()=>{document.getElementById("submit2").click(); }, 100);
+	}
+	</script>
 
 	<style type="text/css" media="screen">
 		/*
@@ -39,7 +47,7 @@ document.onkeypress = stopRKey;
 		}
 
 
-		}
+		
 			table { 
 				border-collapse: collapse; 
 				border-spacing: 0; 
@@ -454,7 +462,7 @@ document.onkeypress = stopRKey;
 			<br><br><br><br><br>
 
 			<div style="margin-left: 400px;">
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#submit">
+			<button type="button" class="btn btn-primary" id="submit1" data-toggle="modal" data-target="#submit">
 				Submit
 			</button>
 			</div>
@@ -476,7 +484,7 @@ document.onkeypress = stopRKey;
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">No, Review!</button>
-						<button type="submit" class="btn btn-primary">Yes,Submit</button>
+						<button type="submit" id="submit2" class="btn btn-primary">Yes,Submit</button>
 					</div>
 					</div>
 				</div>
