@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,11 +6,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>CrossCode by CCS</title>
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+		  <!-- Icons -->
+  <link rel="stylesheet" href={% static "assets/vendor/nucleo/css/nucleo.css" %} type="text/css">
+  <link rel="stylesheet" href={% static "assets/vendor/%40fortawesome/fontawesome-free/css/all.min.css" %} type="text/css">
+  <!-- Page plugins -->
+  <!-- Argon CSS -->
+  <link rel="stylesheet" href={% static "assets/css/argon.mine209.css" %} type="text/css">
+	
 	<script type="text/javascript"> 
 
 function stopRKey(evt) { 
@@ -21,6 +24,7 @@ function stopRKey(evt) {
 document.onkeypress = stopRKey; 
 
 </script>
+
 <script type="text/javascript">
 	setTimeout("CallButton()",7200000)
 	function CallButton()
@@ -28,7 +32,7 @@ document.onkeypress = stopRKey;
 	   document.getElementById("submit1").click(); 
 	   setTimeout(()=>{document.getElementById("submit2").click(); }, 100);
 	}
-	</script>
+</script>
 
 	<style type="text/css" media="screen">
 		/*
@@ -47,7 +51,7 @@ document.onkeypress = stopRKey;
 		}
 
 
-		
+
 			table { 
 				border-collapse: collapse; 
 				border-spacing: 0; 
@@ -118,9 +122,6 @@ document.onkeypress = stopRKey;
 				color: blue;
 			}
 
-			
-
-
 
 
 			
@@ -176,11 +177,11 @@ document.onkeypress = stopRKey;
 
 <body>
 <div class="container">
-	<h3>Time Left: <span id="time"></span> minutes!</h3>	
+	<h1 class="text-warning text-center">Time Left: <span id="time"></span> minutes</h1>	
 	<div class="row">
 		<div class="col-md-8">
 			<!-- crossword puzzle appended here -->
-			<form name="quiz" id="quiz" target="_quiz" method="post" action="">
+			<form name="quiz" id="quiz" method="post" action="">
 			{% csrf_token %}
 				<table id="puzzle">
 					<tbody>
@@ -480,7 +481,7 @@ document.onkeypress = stopRKey;
 						</button>
 					</div>
 					<div class="modal-body">
-						...
+						<h3 class="text-warning">Once submitted, changes will not be reverted!</h3>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">No, Review!</button>
@@ -492,7 +493,6 @@ document.onkeypress = stopRKey;
 			
 			</form>
 		</div>
-
 
 		<div id="puzzle-clues" class="col-md-4">
 			
@@ -779,11 +779,58 @@ If d(<i>a</i>) = <i>b</i> and d(<i>b</i>) = <i>a</i>, where <i>a</i> ≠ <i>b</i
 	</div>
 </div>
 
-<footer style="font-size: 20px; float: right; padding: 20px;">
 
-						<a style="color: #39b9bc ;">&copy; Creative Computing Society</a>
-					
-</footer>
+  <!-- Argon Scripts -->
+  <!-- Core -->
+  <script src={% static "assets/vendor/jquery/dist/jquery.min.js" %}></script>
+  <script src={% static "assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js" %}></script>
+  <script src={% static "assets/vendor/js-cookie/js.cookie.js" %}></script>
+  <script src={% static "assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js" %}></script>
+  <script src={% static "assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js" %}></script>
+  <script src={% static "assets/vendor/lavalamp/js/jquery.lavalamp.min.js" %}></script>
+  <!-- Optional JS -->
+  <script src={% static "assets/vendor/chart.js/dist/Chart.min.js" %}></script>
+  <script src={% static "assets/vendor/chart.js/dist/Chart.extension.js" %}></script>
+  <!-- Argon JS -->
+  <script src={% static "assets/js/argon.mine209.js" %}></script>
+  <!-- Demo JS - remove this in your project -->
+  <script src={% static "assets/js/demo.min.js" %}></script>
 
+  <script src={% static "assets/js/datatables.js" %}></script>
+  <script src={% static "assets/js/notify.js" %}></script>
+
+   <script>
+      $(document).ready(function() {
+        $('#datatable').DataTable({
+          "pagingType": "full_numbers",
+          "lengthMenu": [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+          ],
+          responsive: true,
+          language: {
+            search: "_INPUT_",
+            searchPlaceholder: "Search records",
+          }
+  
+        }
+  );
+  
+        var table = $('#datatable').DataTable(); });
+    </script>
+
+    <script>
+    $(document).ready(function() {
+        // messages timeout for 10 sec 
+        setTimeout(function() {
+            $('.alert').fadeOut('slow');
+        }, 4000); // <-- time in milliseconds, 1000 =  1 sec
+
+        // delete message
+        $('.del-msg').live('click',function(){
+            $('.del-msg').parent().attr('style', 'display:none;');
+        })
+    });
+</script>
 </body>
 </html>	

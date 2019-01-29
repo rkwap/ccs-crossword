@@ -1,0 +1,150 @@
+{% load i18n %}
+{% load account socialaccount %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="CCS">
+  <title>Crosscode By CCS</title>
+  <!-- Fonts -->
+  <link rel="stylesheet" href={% static "assets/css/fonts.css?family=Open+Sans:300,400,600,700" %} type="text/css">
+  <!-- Icons -->
+  <link rel="stylesheet" href={% static "assets/vendor/nucleo/css/nucleo.css" %} type="text/css">
+  <link rel="stylesheet" href={% static "assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" %} type="text/css">
+  <!-- Argon CSS -->
+  <link rel="stylesheet" href={% static "assets/css/argon.mine209.css" %} type="text/css">
+</head>
+
+<body class="bg-default">
+  <!-- Main content -->
+  <div class="main-content">
+    <!-- Header -->
+    <div class="header bg-gradient-primary py-7 py-lg-8 pt-lg-9">
+      <div class="container">
+        <div class="header-body text-center mb-7">
+          <div class="row justify-content-center">
+            <div class="col-xl-5 col-lg-6 col-md-8 px-5">
+              <h1 class="text-white">CROSS-CODE</h1>
+              <p class="text-lead text-white">
+              <img src={% static "assets/img/helix.png" %} height="180em"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="row"><div class="col-md-3"></div>{% include '../messages.html' %}</div>
+      <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </div>
+    
+    <!-- Page content -->
+      <div class="container mt--8 pb-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-md-7">
+            <div class="card bg-secondary border-0 mb-0">
+              <div class="card-body px-lg-5 py-lg-5">
+                <div class="text-center text-muted mb-4">
+                  <small>Sign in with credentials</small>
+                </div>
+
+
+                <!-- Form -->
+                <form role="form" method="POST" action="{% url 'account_login' %}">
+                {% csrf_token %}
+                {% load form_extras %}
+
+              <!--Form Help Text-->
+              {% if form.help_text %}
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>{{form.help_text}}</strong>
+              </div>
+              {% endif %}
+
+              <!--Form Errors -->
+              {% if form.errors %}
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              {% for key, value in form.errors.items %}
+              <strong>{% if key != '__all__' %}{{ key }} {% endif %}{{ value }}</strong>
+              {% endfor %}
+              </div>
+              {% endif %}
+
+                  <div class="form-group mb-3">
+                    <div class="input-group input-group-merge input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-single-02"></i></span>
+                      </div>
+                      <!-- Input -->
+                      {{ form.login|formclass:"form-control" }}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group input-group-merge input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                      <!-- Input -->
+                      {{ form.password|formclass:"form-control form-control-appended" }}  
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary my-4">Sign in</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+              <div class="col-6 text">
+                <a href="{{ signup_url }}" class="text-light"><small><b>Create new account</b></small></a>
+              </div>
+            </div>
+        </div>
+      </div>
+  </div>
+  <!-- Footer -->
+  <footer class="py-5" id="footer-main">
+    <div class="container">
+      <div class="row align-items-center justify-content-xl-between">
+        <div class="col-xl-6">
+          <div class="copyright text-center text-xl-left text-muted">
+            &copy; 2018 <a href="http://ccstiet.com" class="font-weight-bold ml-1" target="_blank">Creative Computing Society</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Argon Scripts -->
+  <!-- Core -->
+  <script src="{% static "assets/vendor/jquery/dist/jquery.min.js" %}></script>
+  <script src="{% static "assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js" %}></script>
+  <script src="{% static "assets/vendor/js-cookie/js.cookie.js" %}></script>
+  <script src="{% static "assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js" %}></script>
+  <script src="{% static "assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js" %}></script>
+  <script src="{% static "assets/vendor/lavalamp/js/jquery.lavalamp.min.js" %}></script>
+  <!-- Argon JS -->
+  <script src="{% static "assets/js/argon.min.js?v=1.0.0" %}></script>
+  <!-- Demo JS - remove this in your project -->
+  <script src=".{% static "assets/js/demo.min.js" %}></script>
+      <script>
+    $(document).ready(function() {
+        // messages timeout for 10 sec 
+        setTimeout(function() {
+            $('.alert').fadeOut('slow');
+        }, 4000); // <-- time in milliseconds, 1000 =  1 sec
+
+        // delete message
+        $('.del-msg').live('click',function(){
+            $('.del-msg').parent().attr('style', 'display:none;');
+        })
+    });
+</script>
+</body>
+
+</html>

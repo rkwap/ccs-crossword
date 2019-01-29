@@ -21,4 +21,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')), # for accounts
     path('play/',views.play, name="play"),
     path('leaderboard/',views.results, name="results"),
+    path('',views.dashboard, name="dashboard"),
 ]
