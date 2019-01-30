@@ -10,7 +10,7 @@ BOXES = 53  # Total number of boxes in crossword
 CORRECT_POINTS = 4  # Marks awarded on correct response
 INCORRECT_POINTS = 1 # Marks deduced on incorrect response 
 UNATTEMPT_POINTS = 0
-TIME_ALLOTED = 22 # Time alloted for the quiz (in minutes)
+TIME_ALLOTED = 2 # Time alloted for the quiz (in minutes)
 ######
 
 @login_required

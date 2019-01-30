@@ -98,8 +98,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'crossword',
-        'USER': 'kush',
-        'PASSWORD': '1234',
+        'USER': 'postgres',
+        'PASSWORD': '8608',
         'HOST': 'localhost',
         'PORT': '5432',
     }
