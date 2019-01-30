@@ -2,16 +2,24 @@ from django.shortcuts import *
 from .models import *
 import datetime
 from datetime import timedelta,timezone
+from django.contrib.auth.decorators import login_required # login_required decorator
+from django.contrib import messages
 
 ### Some Settings ###
 BOXES = 53  # Total number of boxes in crossword
 CORRECT_POINTS = 4  # Marks awarded on correct response
 INCORRECT_POINTS = 1 # Marks deduced on incorrect response 
 UNATTEMPT_POINTS = 0
-TIME_ALLOTED = 120 # Time alloted for the quiz (in minutes)
+TIME_ALLOTED = 90 # Time alloted for the quiz (in minutes)
 ######
 
-# Create your views here.
+@login_required
+def dashboard(request):
+    # messages.success(request, 'Your password was updated successfully!')
+    return render(request,"dashboard.html",locals())
+
+
+@login_required
 def play(request):
     user_id = request.user
     objs = leaderboard.objects.filter(user=user_id, completed=True)
@@ -30,6 +38,7 @@ def play(request):
             time_remaining = time_alloted - datetime.datetime.now(timezone.utc)
             time_remaining = round(time_remaining/ timedelta(minutes=1),2)
             if time_remaining <=0:
+                messages.error(request, 'Time Over!')
                 return redirect(reverse('results'))
             return render(request,"start.html",locals())
         else:
@@ -50,13 +59,15 @@ def play(request):
             user.completed=True
             user.finished_at=datetime.datetime.now()    
             user.save()
+        messages.success(request, 'Thank You! Check results.')
         return redirect(reverse('results'))    
     else:
+        messages.warning(request, 'Completed! Check results.')
         return redirect(reverse('results'))
     return render(request,"start.html",locals())
 
 
-
+@login_required
 def results(request):
     time_taken = []
     users = leaderboard.objects.all().extra(select={

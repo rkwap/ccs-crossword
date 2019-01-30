@@ -1,54 +1,75 @@
-<html>
-  <head>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <h1>Leaderboard</h1>
-    <table class="table table-bordered">
-      <tbody>
-        <tr>
-          <td><h3>NAME</h3></td>
-          <td><h3>SCORE</h3></td>
-          <td><h3>COMPLETED</h3></td>
-          <td><h3>TIME TAKEN</h3></td>
-          <td><h3>STARTED AT</h3></td>
-          <td><h3>FINISHED AT</h3></td>
-        </tr>
-        {% for u,time in data %}
-        <tr>
-          <td>{{ u.user }}</td>
-          
-          {% if u.score is not none %}
-          <td>{{ u.score }}</td>
-          {% else %}
-          <td></td>
-          {% endif %}
+{% extends "base.html" %}
+  {% block content %}
+  <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">Leaderboard</h4>
+            </div>
+            <div class="card-body">
+              <div class="toolbar">
+                <!--        Here you can write extra buttons/actions for the toolbar              -->
+              </div>
+              <table id="datatable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th><h3>S.No</h3></th>
+                    <th><h3>NAME</h3></th>
+                    <th><h3>SCORE</h3></th>
+                    <th><h3>COMPLETED</h3></th>
+                    <th><h3>TIME TAKEN</h3></th>
+                    <th><h3>STARTED AT</h3></th>
+                    <th><h3>FINISHED AT</h3></th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th><h3>S.No</h3></th>
+                    <th><h3>NAME</h3></th>
+                    <th><h3>SCORE</h3></th>
+                    <th><h3>COMPLETED</h3></th>
+                    <th><h3>TIME TAKEN</h3></th>
+                    <th><h3>STARTED AT</h3></th>
+                    <th><h3>FINISHED AT</h3></th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                {% for u,time in data %}
+                  <tr>
+                    <td>{{ forloop.counter }}.</td>
+                    <td>{{ u.user }}</td>
+                    
+                    {% if u.score is not none %}
+                    <td>{{ u.score }}</td>
+                    {% else %}
+                    <td></td>
+                    {% endif %}
 
-          {% if u.completed is True %}
-          <td>Yes</td>
-          {% else %}
-          <td>No</td>
-          {% endif %}
+                    {% if u.completed is True %}
+                    <td>Yes</td>
+                    {% else %}
+                    <td>No</td>
+                    {% endif %}
 
-          {% if time is not none %}
-          <td>{{ time }} minutes</td>
-          {% else %}
-          <td></td>
-          {% endif %}
+                    {% if time is not none %}
+                    <td>{{ time }} minutes</td>
+                    {% else %}
+                    <td></td>
+                    {% endif %}
 
-          <td>{{ u.started_at|time }}</td>
-          <td>{{ u.finished_at|time }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+                    <td>{{ u.started_at|time }}</td>
+                    <td>{{ u.finished_at|time }}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <!-- end content-->
+          </div>
+          <!--  end card  -->
+        </div>
+        <!-- end col-md-12 -->
+      </div>
+      <!-- end row -->
 
-
-<br><br><br>
-  </body>
-</html>
+{% endblock %}
