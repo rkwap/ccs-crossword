@@ -21,15 +21,6 @@ function stopRKey(evt) {
 document.onkeypress = stopRKey; 
 
 </script>
-<script type="text/javascript">
-	setTimeout("CallButton()",7200000)
-	function CallButton()
-	{
-	   document.getElementById("submit1").click(); 
-	   setTimeout(()=>{document.getElementById("submit2").click(); }, 100);
-	}
-	</script>
-
 	<style type="text/css" media="screen">
 		/*
 			Default puzzle styling
@@ -484,7 +475,7 @@ document.onkeypress = stopRKey;
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">No, Review!</button>
-						<button type="submit" id="submit2" class="btn btn-primary">Yes,Submit</button>
+						<button type="submit" id="submit2" class="btn btn-primary" onclick="close_window(); return false;">Yes,Submit</button>
 					</div>
 					</div>
 				</div>
@@ -784,6 +775,15 @@ If d(<i>a</i>) = <i>b</i> and d(<i>b</i>) = <i>a</i>, where <i>a</i> ≠ <i>b</i
 						<a style="color: #39b9bc ;">&copy; Creative Computing Society</a>
 					
 </footer>
+
+ <script type="text/javascript">
+	setTimeout("CallButton()",7200000)
+	function CallButton()
+	{
+	   document.getElementById("submit1").click(); 
+	   setTimeout(()=>{document.getElementById("submit2").click(); }, 100);
+	}
+	</script> 
 
 </body>
 </html>	
